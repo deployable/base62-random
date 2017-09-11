@@ -1,22 +1,23 @@
-"use strict";
+'use strict';
+/* global window */
 
 (function(){
 
-  var buf;
-  var str = '';
-  var strIdx = 0;
-  var i;
+  var buf
+  var str = ''
+  var strIdx = 0
+  var i
   var chars = 'abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
   // Reduce calls to `crypto` by increasing this number (>=16)
   // Uses a tiny bit more memory to store the random bytes (try 16384)
-  var BUFFER_SIZE = 8192;
+  var BUFFER_SIZE = 8192
 
 
   // Binary uuids (even faster)
 
   // Test for uuid
-  base62.test = isbase62;
+  base62.test = isbase62
   base62.generateBase62Math = generateBase62Math
   base62.generateBase62Node = generateBase62Node
   base62.generateBase62Browser = generateBase62Browser
@@ -26,28 +27,28 @@
 
   // Node & Browser support
   if ((typeof module !== 'undefined') && (typeof require === 'function')) {
-    var crypto = require('crypto');
-    module.exports = base62;
+    var crypto = require('crypto')
+    module.exports = base62
   } else if (typeof window !== 'undefined') {
-    window.base62 = base62;
+    window.base62 = base62
   }
 
   // Backup method
   function getRandomChar() {
-    return chars[Math.floor(Math.random() * (62 - 0)) + 0];
+    return chars[Math.floor(Math.random() * (62 - 0)) + 0]
   }
 
   // base62.test
   function isbase62(str) {
     if (typeof str === 'string') {
-      return /^[0-9a-zA-Z]+$/.test(str);
+      return /^[0-9a-zA-Z]+$/.test(str)
     }
     return false
   }
 
   function generateBase62Math(){
     for (i = 0; i < BUFFER_SIZE; i++) {
-      buf[i] = getRandomChar();
+      buf[i] = getRandomChar()
     }
     strIdx = 0
     return str = buf.join('')
@@ -56,33 +57,33 @@
   function generateBase62Node(){
     //console.error('generating str',strIdx)
     strIdx = 0
-    return str = crypto.randomBytes(BUFFER_SIZE).toString('base64').replace(/[\+\=\/]/g,'');
+    return str = crypto.randomBytes(BUFFER_SIZE).toString('base64').replace(/[\+\=\/]/g,'')
   }
  
   // https://github.com/beatgammit/base64-js
   function generateBase62Browser(){
-    buf = crypto.getRandomValues(buf);
+    buf = crypto.getRandomValues(buf)
     var tmp = Array(BUFFER_SIZE)
     for (i=0; i<BUFFER_SIZE; i++){
       // wastes some bits, some bit pushing should save the extra 4
-      tmp.push(chars[buf[i] % 62]);
+      tmp.push(chars[buf[i] % 62])
     }
     strIdx = 0
-    return str = tmp.join('');
+    return str = tmp.join('')
   }
 
   // Use best RNG as possible
-  var generateBase62;
+  var generateBase62
   strIdx = BUFFER_SIZE
 
   function initMath(){
     str = ''
-    buf = new Array(BUFFER_SIZE);
+    buf = new Array(BUFFER_SIZE)
     generateBase62 = generateBase62Math
   }
   function initBrowser(){
     str = ''
-    buf = new Uint8Array(BUFFER_SIZE);
+    buf = new Uint8Array(BUFFER_SIZE)
     generateBase62 = generateBase62Browser 
   }
   function initNode(){
@@ -100,7 +101,7 @@
     initNode()
   }
   else {
-     throw new Error('Non-standard crypto library');
+     throw new Error('Non-standard crypto library')
   }
 
 
@@ -110,4 +111,4 @@
     return str.slice(strIdx, (strIdx+=length))
   }
 
-})();
+})()
