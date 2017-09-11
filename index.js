@@ -6,8 +6,9 @@
   var str = '';
   var strIdx = 0;
   var i;
+  var chars = 'abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
-  // Reduce calls to crypto by increasing this numberr (>=16)
+  // Reduce calls to `crypto` by increasing this number (>=16)
   // Uses a tiny bit more memory to store the random bytes (try 16384)
   var BUFFER_SIZE = 8192;
 
@@ -16,6 +17,12 @@
 
   // Test for uuid
   base62.test = isbase62;
+  base62.generateBase62Math = generateBase62Math
+  base62.generateBase62Node = generateBase62Node
+  base62.generateBase62Browser = generateBase62Browser
+  base62.initMath = initMath
+  base62.initNode = initNode
+  base62.initBrowser = initBrowser
 
   // Node & Browser support
   if ((typeof module !== 'undefined') && (typeof require === 'function')) {
@@ -26,7 +33,6 @@
   }
 
   // Backup method
-  var chars = 'abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
   function getRandomChar() {
     return chars[Math.floor(Math.random() * (62 - 0)) + 0];
   }
@@ -39,19 +45,18 @@
     return false
   }
 
-
   function generateBase62Math(){
     for (i = 0; i < BUFFER_SIZE; i++) {
       buf[i] = getRandomChar();
     }
-    str = buf.join('')
     strIdx = 0
+    return str = buf.join('')
   }
 
   function generateBase62Node(){
     //console.error('generating str',strIdx)
-    str = crypto.randomBytes(BUFFER_SIZE).toString('base64').replace(/[\+\=\/]/g,'');
     strIdx = 0
+    return str = crypto.randomBytes(BUFFER_SIZE).toString('base64').replace(/[\+\=\/]/g,'');
   }
  
   // https://github.com/beatgammit/base64-js
@@ -59,26 +64,40 @@
     buf = crypto.getRandomValues(buf);
     var tmp = Array(BUFFER_SIZE)
     for (i=0; i<BUFFER_SIZE; i++){
+      // wastes some bits, some bit pushing should save the extra 4
       tmp.push(chars[buf[i] % 62]);
     }
-    str = tmp.join('');
     strIdx = 0
+    return str = tmp.join('');
   }
 
   // Use best RNG as possible
   var generateBase62;
   strIdx = BUFFER_SIZE
 
+  function initMath(){
+    str = ''
+    buf = new Array(BUFFER_SIZE);
+    generateBase62 = generateBase62Math
+  }
+  function initBrowser(){
+    str = ''
+    buf = new Uint8Array(BUFFER_SIZE);
+    generateBase62 = generateBase62Browser 
+  }
+  function initNode(){
+    str = ''
+    generateBase62 = generateBase62Node
+  }
+
   if (typeof crypto === 'undefined') {
-     buf = new Array(BUFFER_SIZE);
-     generateBase62 = generateBase62Math
+    initMath()
   }
   else if (crypto.getRandomValues) {
-     buf = new Uint8Array(BUFFER_SIZE);
-     generateBase62 = generateBase62Browser 
+    initBrowser()
   }
   else if (crypto.randomBytes) {
-     generateBase62 = generateBase62Node
+    initNode()
   }
   else {
      throw new Error('Non-standard crypto library');
