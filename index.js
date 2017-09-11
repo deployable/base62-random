@@ -57,14 +57,16 @@
   function generateBase62Node(){
     //console.error('generating str',strIdx)
     strIdx = 0
-    return str = crypto.randomBytes(BUFFER_SIZE).toString('base64').replace(/[\+\=\/]/g,'')
+    return str = crypto.randomBytes(BUFFER_SIZE)
+      .toString('base64')
+      .replace(/[+.=/]/g,'')
   }
  
   // https://github.com/beatgammit/base64-js
   function generateBase62Browser(){
     buf = crypto.getRandomValues(buf)
     var tmp = Array(BUFFER_SIZE)
-    for (i=0; i<BUFFER_SIZE; i++){
+    for ( i=0; i<BUFFER_SIZE; i++){
       // wastes some bits, some bit pushing should save the extra 4
       tmp.push(chars[buf[i] % 62])
     }
