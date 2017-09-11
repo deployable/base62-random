@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha test/unit* test/perf*",
-    "test:coverage": "istanbul cover _mocha && istanbul check-coverage",
+    "test:coverage": "istanbul cover _mocha test/unit* && istanbul check-coverage",
     "release:test": "set -uex; npm test; npm version prerelease; npm publish --tag testing --access public",
     "release:patch": "set -uex; rm -rf node_modules; yarn install; yarn test; yarn run test:coverage; npm version patch; git push; npm publish --access public; git push --tags;"
   },
