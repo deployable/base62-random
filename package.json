@@ -1,0 +1,25 @@
+{
+  "name": "base62-random",
+  "version": "0.1.0",
+  "description": "Fast base62 random",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deployable/base62-random.git"
+  },
+  "keywords": [
+    "base62",
+    "fast",
+    "random",
+    "tiny"
+  ],
+  "author": "Wes Roberts",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/deployable/base62-random/issues"
+  },
+  "homepage": "https://github.com/deployable/base62-random#readme"
+}
