@@ -1,10 +1,11 @@
-var base62 = require('./index');
+var base62 = require('../');
 var i;
 var sts = Date.now()
 var count = 100000000
 var last_time = Date.now()
 for (i = 0; i<count; i++) {
   var id = base62(12)
+  //console.log(id)
   if ( ! /^[0-9a-zA-Z]{12}$/.test(id) ){
     throw new Error('Invalid base62: "' + id + '"');
   }
