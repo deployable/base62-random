@@ -4,9 +4,10 @@
   "description": "Fast base62 random",
   "main": "index.js",
   "scripts": {
-    "test": "node test/test.js",
+    "test": "mocha test/unit* test/perf*",
+    "test:coverage": "istanbul cover _mocha && istanbul check-coverage",
     "release:test": "set -uex; npm test; npm version prerelease; npm publish --tag testing --access public",
-    "release:patch": "set -uex; rm -rf node_modules; yarn install; yarn test; yarn run test:gulp; yarn run test:coverage; npm version patch; git push; npm publish --access public; git push --tags;"
+    "release:patch": "set -uex; rm -rf node_modules; yarn install; yarn test; yarn run test:coverage; npm version patch; git push; npm publish --access public; git push --tags;"
   },
   "repository": {
     "type": "git",
@@ -18,10 +19,15 @@
     "random",
     "tiny"
   ],
-  "author": "Wes Roberts",
+  "author": "Matt Hoyle",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/deployable/base62-random/issues"
   },
-  "homepage": "https://github.com/deployable/base62-random#readme"
+  "homepage": "https://github.com/deployable/base62-random#readme",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.5.2"
+  }
 }
