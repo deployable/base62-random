@@ -19,7 +19,7 @@ Largely based on [`uuid-random`](https://github.com/jchook/uuid-random)
 
 ```javascript
 var uuid = require('base62-random');
-base62(12); // 'xxx'
+base62(12); // 'KsykHbcCzUSL'
 ```
 
 ### Browser
@@ -27,7 +27,7 @@ base62(12); // 'xxx'
 ```html
 <script src="base62-random.min.js"></script>
 <script>
-  base62(13); // 'b96ab5e6-f1e8-4653-ab08-4dd82ea65778'
+  base62(13); // 'BAhl1V1BfUmo'
 </script>
 ```
 
@@ -35,7 +35,7 @@ base62(12); // 'xxx'
 ### Is base62 string?
 
 ```javascript
-base62.test('f14A4r2e'); // true
+base62.test('5HXx8Eznu0'); // true
 base62.test('P-f6cA4e'); // false
 ```
 
