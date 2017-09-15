@@ -18,6 +18,8 @@
 
   // Test for uuid
   base62.test = isbase62
+  
+  // Attach methods for tests to use
   base62.generateBase62Math = generateBase62Math
   base62.generateBase62Node = generateBase62Node
   base62.generateBase62Browser = generateBase62Browser
@@ -103,7 +105,7 @@
     initNode()
   }
   else {
-     throw new Error('Non-standard crypto library')
+    throw new Error('Non-standard crypto library')
   }
 
 
