@@ -7,9 +7,9 @@ describe('base62', function(){
     var last_time = Date.now()
     var count = 2000000
     for ( var i=0; i<count; i++ ) {
-      var id = base62(10)
+      var id = base62(12)
       //console.log(id)
-      if ( ! /^[0-9a-zA-Z]{10}$/.test(id) ){
+      if ( ! /^[0-9a-zA-Z]{12}$/.test(id) ){
         throw new Error('Invalid base62: "' + id + '"');
       }
       //if (i % 3000000 == 0) {
