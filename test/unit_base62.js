@@ -15,6 +15,21 @@ describe('base62', function(){
     expect( base62(6) ).to.be.match(/^[0-9a-z]{6}$/i)
   })
   
+  it('should error on a undefined method param', function(){
+    let fn = ()=> base62()
+    expect( fn ).to.throw(/base62 length must be a number "undefined"/i)
+  })
+  
+  it('should error on a string method param', function(){
+    let fn = ()=> base62('a')
+    expect( fn ).to.throw(/base62 length must be a number "a"/i)
+  })
+
+  it('should not carc it on a float', function(){
+    expect( base62(4.4) ).to.match(/^[0-9a-z]{4}/i)
+    expect( base62(4.9) ).to.match(/^[0-9a-z]{4}/i)
+  })
+
   it('should successfully test a base62 string', function(){
     expect( base62.test('1234qwerXCZV') ).to.be.true
   })
