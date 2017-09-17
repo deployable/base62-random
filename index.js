@@ -13,9 +13,6 @@
   // Uses a tiny bit more memory to store the random bytes (try 16384)
   var BUFFER_SIZE = 8192
 
-
-  // Binary uuids (even faster)
-
   // Test for uuid
   base62.test = isbase62
   
