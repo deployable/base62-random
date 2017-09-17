@@ -1,4 +1,4 @@
-
+/* eslint env: { "mocha": true } */
 const base62 = require('../')
 
 describe('base62', function(){
