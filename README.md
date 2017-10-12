@@ -1,7 +1,7 @@
 # base62-random
 
-Generate random base62 strings
-[random UUIDs](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_4_.28random.29)
+Generate random [base62 strings]
+(https://helloacm.com/base62/)
 with better 
 [statistical dispersion](https://en.wikipedia.org/wiki/Statistical_dispersion)
 than `Math.random()` unless Math.random is all that's available.
