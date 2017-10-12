@@ -1,7 +1,7 @@
 {
   "name": "base62-random",
   "version": "0.3.1",
-  "description": "Fast base62 random",
+  "description": "Fast base62 random strings",
   "main": "index.js",
   "scripts": {
     "minify": "uglifyjs index.js -mco base62-random.min.js",

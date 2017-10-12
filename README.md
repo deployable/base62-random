@@ -10,8 +10,10 @@ Largely based on [`uuid-random`](https://github.com/jchook/uuid-random)
 
 ## Install
 
+    yarn add base62-random
     npm install base62-random
 
+https://www.npmjs.com/package/base62-random
 
 ## Example Usage
 
