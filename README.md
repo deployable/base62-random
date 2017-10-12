@@ -18,7 +18,7 @@ Largely based on [`uuid-random`](https://github.com/jchook/uuid-random)
 ### Node
 
 ```javascript
-var uuid = require('base62-random');
+var base62 = require('base62-random');
 base62(12); // 'KsykHbcCzUSL'
 ```
 
