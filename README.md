@@ -25,7 +25,7 @@ base62(12); // 'KsykHbcCzUSL'
 ### Browser
 
 ```html
-<script src="base62-random.min.js"></script>
+<script src="https://cdn.rawgit.com/deployable/base62-random/v0.3.5/base62-random.min.js"></script>
 <script>
   base62(13); // 'BAhl1V1BfUmo3'
 </script>
