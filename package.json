@@ -4,6 +4,7 @@
   "description": "Fast base62 random",
   "main": "index.js",
   "scripts": {
+    "minify": "uglifyjs index.js -mco base62-random.min.js",
     "test": "mocha test/unit* test/perf*",
     "test:coverage": "istanbul cover _mocha test/unit* && istanbul check-coverage",
     "release:test": "set -uex; npm test; npm version prerelease; npm publish --tag testing --access public",
@@ -29,6 +30,7 @@
     "chai": "^4.1.2",
     "eslint": "^4.6.1",
     "istanbul": "^0.4.5",
-    "mocha": "^3.5.2"
+    "mocha": "^3.5.2",
+    "uglify-js": "^3.1.3"
   }
 }

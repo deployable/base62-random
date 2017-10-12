@@ -27,7 +27,7 @@ base62(12); // 'KsykHbcCzUSL'
 ```html
 <script src="base62-random.min.js"></script>
 <script>
-  base62(13); // 'BAhl1V1BfUmo'
+  base62(13); // 'BAhl1V1BfUmo3'
 </script>
 ```
 

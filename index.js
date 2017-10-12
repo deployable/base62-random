@@ -108,7 +108,7 @@
 
   // String UUIDv4 (Random)
   function base62(length) {
-    if ( !length || typeof length !== 'number') throw new Error(`base62 length must be a number "${length}"`)
+    if ( !length || typeof length !== 'number') throw new Error('base62 length must be a number "'+length+'"')
     if ( str.length < (strIdx+length) ) generateBase62()
     return str.slice(strIdx, (strIdx+=length))
   }
