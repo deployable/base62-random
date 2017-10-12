@@ -45,7 +45,7 @@ MIT
 
 ## Links
 
-- Based on https://github.com/jchook/uuid-random
-- https://github.com/deployable/base62-random
-- https://www.npmjs.com/package/base62-random
+- Based on [jchook/uuid-random](https://github.com/jchook/uuid-random)
+- github [deployable/base62-random](https://github.com/deployable/base62-random)
+- npm [base62-random](https://www.npmjs.com/package/base62-random)
 
