@@ -1,8 +1,6 @@
 # base62-random
 
-Generate random [base62 strings]
-(https://helloacm.com/base62/)
-with better 
+Generate random [base62 strings](https://helloacm.com/base62/) with better 
 [statistical dispersion](https://en.wikipedia.org/wiki/Statistical_dispersion)
 than `Math.random()` unless Math.random is all that's available.
 
