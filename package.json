@@ -6,9 +6,10 @@
   "scripts": {
     "minify": "uglifyjs index.js -mco base62-random.min.js",
     "test": "mocha test/unit* test/perf*",
+    "test:minify": "set -e; yarn run minify; mocha test/minify*",
     "test:coverage": "istanbul cover _mocha test/unit* && istanbul check-coverage",
-    "release:test": "set -uex; npm test; npm version prerelease; npm publish --tag testing --access public",
-    "release:patch": "set -uex; rm -rf node_modules; yarn install; yarn test; yarn run test:coverage; npm version patch; git push; npm publish --access public; git push --tags;"
+    "release:test": "set -uex; yarn test; yarn run test:minify; yarn npm version prerelease; npm publish --tag testing --access public",
+    "release:patch": "set -uex; rm -rf node_modules; yarn install; yarn run:test:minify; yarn run test:coverage; npm version patch; git push; npm publish --access public; git push --tags;"
   },
   "repository": {
     "type": "git",
